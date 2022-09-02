@@ -1,6 +1,6 @@
 def branch_nem = scm.branches[0].name
 if (branch_nem.contains("*/")) {
-    branch_nem = branch_nem.split("\\*/")[2]
+    branch_nem = branch_nem.split("\\*/")[1]
     }
 echo branch_nem
 
@@ -14,9 +14,8 @@ environment {
         stage ('scm') {
             steps {
                 script {
-                    git branch: 'main', credentialsId: 'fbff5d5b-b0ab-4e5d-ad42-97c933e4773d', url: 'https://github.com/middesreenivasjayanthi/jenkins.git'
                     
-                    echo "br is ${env.GIT_BRANCH}"
+                    echo "br is ${branch_nem}"
                 }    
             }
         }
