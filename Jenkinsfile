@@ -22,7 +22,7 @@ environment {
         stage ('validation') {
             steps {
                 script {
-                    if (brnchname =~ /release-.+|hotfix\/.+/) {
+                    if (brnchname =~ /release-yyyyMMdd/.+|hotfix/release-yyyyMMdd/.+|private\/ANLYS-.) {
                         echo "branch name contains ${brnchname}"
                     } 
                     else {
