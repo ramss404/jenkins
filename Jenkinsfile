@@ -23,7 +23,7 @@ environment {
             steps {
                 script {
                     if (brnchname =~ /release-.+|hotfix\/.+/) {
-                    echo "branch name contains private"
+                        echo "branch name contains ${brnchname}"
                     } 
                     else {
                     echo "branch name does not contain private"
