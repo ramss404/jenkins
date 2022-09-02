@@ -1,4 +1,4 @@
-def branch_nem = scm.branches[0].name
+def branch_nem = scm.branches[1].name
 if (branch_nem.contains("*/")) {
     branch_nem = branch_nem.split("\\*/")[1]
     }
@@ -23,7 +23,7 @@ environment {
         stage ('validation') {
             steps {
                 script {
-                    if (brnchname == "origin/main") {
+                    if (brnchname == "private") {
                     echo "branch name contains private"
                     } 
                     else {
