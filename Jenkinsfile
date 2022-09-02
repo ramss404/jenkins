@@ -23,7 +23,7 @@ environment {
         stage ('validation') {
             steps {
                 script {
-                    if (brnchname == "private") {
+                    if (brnchname == "origin/main") {
                     echo "branch name contains private"
                     } 
                     else {
