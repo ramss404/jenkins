@@ -23,15 +23,9 @@ environment {
             steps {
                 script {
                     sh '''
-                        IN="bla@some.com;john@home.com"
-
-                        mails=$(echo $IN | tr ";" "\\n")
-
-                        for addr in $mails
-                        do
-                        echo "> [$addr]"    
-                        done
-                        '''
+                        IN="bla@some.com;john@home.com" | mails=$(echo $IN | tr ";" "\\n") | for addr in $mails | do | echo "> [$addr]" | done
+                        
+                       '''
                     
                     if (brnchname =~ /release-.+|hotfix\/.+/)  {    
                         echo "branch name contains ${brnchname}"
