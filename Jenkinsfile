@@ -22,7 +22,7 @@ environment {
         stage ('validation') {
             steps {
                 script {
-                    if (brnchname =~ /release-.+|private+/) {
+                    if (brnchname =~ /release-.+|hotfix\/.+/) {
                     echo "branch name contains private"
                     } 
                     else {
