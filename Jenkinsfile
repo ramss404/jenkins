@@ -8,7 +8,7 @@ echo branch_nem
 pipeline {
     agent any
 environment {
-    brnchname="release-20220902"
+    brnchname="ANLYS-3232"
 }
     stages {
         stage ('scm') {
@@ -23,11 +23,10 @@ environment {
             steps {
                 script {
                     sh '''
-                        IN="bla@some.com;john@home.com" | mails=$(echo $IN | tr ";" "\\n") | for addr in $mails | do | echo "> [$addr]" | done
                         
                        '''
                     
-                    if (brnchname =~ /release-.+|hotfix\/.+/)  {    
+                    if (brnchname =~ /release-.+|hotfix\/.+|\/ANLYS-.+/)  {    
                         echo "branch name contains ${brnchname}"
                     } 
                     else {
