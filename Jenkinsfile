@@ -26,7 +26,7 @@ environment {
                         
                        '''
                     
-                    if (brnchname =~ /release-.+|hotfix\/.+\/ANLYS-.+/)  {    
+                    if (brnchname =~ /release-.+|hotfix\/.+ANLYS-.+/)  {    
                         echo "branch name contains ${brnchname}"
                     } 
                     else {
