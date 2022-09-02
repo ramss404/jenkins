@@ -8,7 +8,7 @@ echo branch_nem
 pipeline {
     agent any
 environment {
-    brnchname="${branch_nem}"
+    brnchname="release-20220902"
 }
     stages {
         stage ('scm') {
