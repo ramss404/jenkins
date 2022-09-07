@@ -1,36 +1,41 @@
-def branch_nem = scm.branches[0].name
-if (branch_nem.contains("*/")) {
-    branch_nem = branch_nem.split("\\*/")[1]
-    }
-echo branch_nem
-
-
 pipeline {
     agent any
 environment {
-    brnchname="ANLYS-3232"
+    brnchname="hotfix/ANLYS-3232"
 }
     stages {
         stage ('scm') {
             steps {
                 script {
+                    echo "given branch is ${brnchname}"
                     
-                    echo "br is ${branch_nem}"
-                }    
+                    if (brnchname.startsWith("private") || brnchname.startsWith("hotfix") || brnchname.startsWith("feature")) {
+                        
+                        echo "branch starts with in branch - ${brnchname}"
+                        if (brnchname =~ /ANLYS-.+/) {
+                            echo "branch name contains ANLYS in branch - ${brnchname}"
+                        }
+                    }
+                    else {
+                        echo "branch not started with hotfix/feature/private"
+                    }
+                        
+                }
             }
         }
         stage ('validation') {
             steps {
                 script {
-                    sh '''
-                        
-                       '''
                     
-                    if (brnchname =~ /release-.+|hotfix\/.+|ANLYS-.+/)  {    
+                    if (brnchname =~ /release-.+|hotfix\/.+/)  {    
                         echo "branch name contains ${brnchname}"
+                        
+                        if (brnchname =~ /ANLYS-.+/) {
+                            echo "branch name contains ANLYS"
+                        }
                     } 
                     else {
-                    echo "branch name does not contain private"
+                    echo "branch name does not valid"
                     }
                 }    
             }
